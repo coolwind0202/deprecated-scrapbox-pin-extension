@@ -1,0 +1,39 @@
+{
+  "manifest_version": 3,
+  "name": "Scrapbox Pin Utility",
+  "version": "1.0",
+  "description": "Scrapboxで、ピン留めを入れ替えるための拡張機能です。",
+  "icons": {
+    "16": "images/16px.png",
+    "32": "images/32px.png",
+    "48": "images/48px.png",
+    "128": "images/128px.png"
+  },
+  "action": {
+    "default_popup": "dist/popup/src/popup/popup.html"
+  },
+  "content_scripts": [
+    {
+      "js": ["dist/content_script/src/content.js"],
+      "run_at":"document_end",
+      "matches": [
+        "https://scrapbox.io/*"
+      ]
+    }
+  ],
+  "permissions": [
+    "nativeMessaging",
+    "scripting",
+    "activeTab"
+  ],
+  "web_accessible_resources": [{
+    "matches": [
+      "https://scrapbox.io/*"
+    ],
+    "resources": [
+      "dist/popup/src/popup/allow_back.svg",
+      "dist/popup/src/popup/allow_front.svg",
+      "dist/popup/src/popup/unpin.svg"
+    ]
+  }]
+}
